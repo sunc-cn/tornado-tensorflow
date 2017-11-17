@@ -10,8 +10,8 @@ class DigitalOCR():
         self.output = crack_captcha_cnn()
         self.saver = tf.train.Saver()
         self.sess = tf.Session()
-        self.saver.restore(sess, tf.train.latest_checkpoint('./'))
-        self.predict = tf.argmax(tf.reshape(output, [-1, MAX_CAPTCHA, CHAR_SET_LEN]), 2)
+        self.saver.restore(self.sess, tf.train.latest_checkpoint('./'))
+        self.predict = tf.argmax(tf.reshape(self.output, [-1, MAX_CAPTCHA, CHAR_SET_LEN]), 2)
         pass
     def recognize(self,im):
         image = np.array(im)
